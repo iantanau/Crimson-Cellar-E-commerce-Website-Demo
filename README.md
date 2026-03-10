@@ -67,6 +67,18 @@ To test the member features (Checkout, Order History) without registering, use t
 - **Username (Email):** `john.smith@email.com`
 - **Password:** `hashpassword1`
 
+## 🎬 Demo Screenshots
+
+- **Index Page:**
+<img width="1920" height="881" alt="image17" src="https://github.com/user-attachments/assets/df190558-076a-4027-b2f4-383aa7eb1046" />
+- **Login Page:**
+<img width="1920" height="881" alt="image4" src="https://github.com/user-attachments/assets/55896cb1-44d8-48e2-b19f-d1c6f2d99125" />
+- **Account Page:**
+<img width="1920" height="879" alt="image5" src="https://github.com/user-attachments/assets/afbf1308-3ed9-4dd5-8580-8e17cf77f30f" />
+- **Payment Page:**
+<img width="1920" height="879" alt="image11" src="https://github.com/user-attachments/assets/1a8c1a20-953c-49aa-a68a-32b2f5fb67a4" />
+<img width="710" height="1017" alt="image12" src="https://github.com/user-attachments/assets/3998822b-e244-4d0c-9f1e-202d39ea0a7b" />
+
 ## ⚠️ Security Disclaimer
 
 **This project is for educational and portfolio purposes only.**
