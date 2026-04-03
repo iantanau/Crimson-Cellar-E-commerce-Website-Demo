@@ -1,15 +1,13 @@
-<header>
-
-    <?php
-    // Include all necessary class files FIRST
+<?php
     // init_cart.php already handles session_start()
     require_once 'init_cart.php';
     require_once 'conn_db.php';
     
     // Get current page for active navigation highlighting
     $current_page = basename($_SERVER['PHP_SELF']);
-    ?>
+?>
 
+<header>
     <!-- Mobile Menu Toggle Button -->
     <button class="mobile-menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
         <span></span>
