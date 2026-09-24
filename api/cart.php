@@ -1,6 +1,6 @@
 <?php
-include_once 'conn_db.php';
-require_once 'init_cart.php';
+include_once __DIR__ . '/../src/conn_db.php';
+require_once __DIR__ . '/../src/init_cart.php';
 
 // Handle form submissions for updating quantities or removing items
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -47,7 +47,7 @@ $total = $subtotal;
 </head>
 <body>
 
-<?php include 'header.php'; ?>
+<?php include __DIR__ . '/../src/header.php'; ?>
 
 <div class="cart-container">
     <div class="cart-header">
@@ -228,7 +228,7 @@ $total = $subtotal;
     </div>
 </div>
 
-<?php include 'footer.php'; ?>
+<?php include __DIR__ . '/../src/footer.php'; ?>
 
 </body>
 </html>

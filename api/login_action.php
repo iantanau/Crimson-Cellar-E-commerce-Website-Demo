@@ -20,7 +20,7 @@ else {
     // ======================
 
     // Database connection
-    require_once('conn_db.php');
+    require_once __DIR__ . '/../src/conn_db.php';
 
     // Create a select query to select user details using the email
     $query = "SELECT * FROM users WHERE email = ?";

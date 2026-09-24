@@ -1,8 +1,8 @@
 <?php
 // Include class files FIRST
 // init_cart.php already handles session_start()
-require_once 'conn_db.php';
-require_once 'init_cart.php';
+require_once __DIR__ . '/../src/conn_db.php';
+require_once __DIR__ . '/../src/init_cart.php';
 
 // Restore cart from session or create new
 if (!isset($_SESSION['cart'])) {

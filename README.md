@@ -1,111 +1,118 @@
-# 🍷 Crimson Cellar
+# Crimson Cellar
 
-**Crimson Cellar** is a fully functional, PHP-based e-commerce web application designed for selling premium red wines.
+**Crimson Cellar** is a fully functional, PHP-based e-commerce web application designed for selling premium wines. It demonstrates core full-stack web development concepts without relying on a high-level framework:
 
-This project was developed from scratch to demonstrate core full-stack web development concepts, including **Object-Oriented Programming (OOP)**, secure session management, and MySQL database integration, without relying on high-level frameworks like Laravel or Symfony.
+- Object-oriented cart logic (`Product` and `Cart` classes)
+- Session-based authentication and access control
+- MySQL database integration
+- Sanitized user input and simulated payment tokenization
 
-![License](https://img.shields.io/badge/license-MIT-blue.svg) ![PHP](https://img.shields.io/badge/PHP-7.4%2B-purple) ![MySQL](https://img.shields.io/badge/MySQL-Database-orange)
+## Tech stack
 
-## 🌟 Key Features
+- Backend: native PHP (procedural and OOP)
+- Database: MySQL
+- Frontend: HTML5, CSS3, vanilla JavaScript
+- Local server: Apache via XAMPP/WAMP, or PHP's built-in server
+- Hosting target: Vercel with the `vercel-php` community runtime
 
-### 💻 Technical Architecture
-- **OOP Cart System:** Implements custom `Product` and `Cart` classes (`product_cart_class.php`) to encapsulate business logic and state management.
-- **Security Best Practices:**
-  - **Payment Tokenization Simulation:** Credit card inputs are processed via a simulated secure gateway; sensitive data (PAN/CVV) is **never** stored in the database.
-  - **Input Validation:** Rigorous sanitization of user inputs to prevent SQL injection.
-  - **Access Control:** Session-based authentication protecting member-only pages.
+## Project structure
 
-### 🛍️ E-Commerce Functionality
-- **Product Catalog:** Dynamic fetching of wine details, images, and stock levels (`shop.php`).
-- **Shopping Cart:** Add, remove, and update quantities dynamically using PHP Sessions.
-- **Order Processing:** Complete checkout flow that records transaction history.
-- **Search:** Functional search bar to filter products by name or criteria.
+```
+api/          PHP page handlers used by Vercel Functions
+src/          Shared PHP includes, classes, config and templates
+public/       Static assets (CSS and product images)
+database/     MySQL schema/seed file
+vercel.json   Vercel deployment configuration
+```
 
-### 👤 User System
-- **Authentication:** Registration and Login system.
-- **Member Dashboard:** Users can view order history and manage profiles.
-- **Admin Ready:** Database schema supports role-based extensions.
+The old flat layout has been reorganised so the repository root only contains top-level configuration and documentation.
 
-## 🛠️ Technology Stack
+## Local setup
 
-- **Backend:** Native PHP (Procedural & OOP)
-- **Database:** MySQL
-- **Frontend:** HTML5, CSS3, JavaScript (Vanilla)
-- **Server Environment:** Apache (via XAMPP/WAMP)
+### Prerequisites
 
-## 🚀 Installation & Setup
+- PHP 7.4 or newer with `mysqli`
+- MySQL/MariaDB
 
-Follow these steps to run the project locally:
+### 1. Create the database
 
-1.  **Prerequisites:**
-    - Install **XAMPP** (or any environment with Apache & MySQL).
+Create a database named `crimsondb` and import `database/crimson_cellar.sql`.
 
-2.  **Database Setup:**
-    - Open **phpMyAdmin** (`http://localhost/phpmyadmin`).
-    - Create a new database named **`crimsondb`**.
-    - Import the `crimson_cellar.sql` file located in the root/sql folder of this repository.
+### 2. Configure database access
 
-3.  **Configuration:**
-    - Open `conn_db.php`.
-    - Check the database credentials. Default XAMPP settings are usually:
-      ```php
-      $servername = "localhost";
-      $username = "root";
-      $password = ""; // Empty for XAMPP
-      $dbname = "crimsondb";
-      ```
+`src/conn_db.php` reads connection settings from environment variables and falls back to XAMPP-style defaults:
 
-4.  **Run:**
-    - Clone or copy this project folder into your server's root directory (e.g., `C:\xampp\htdocs\crimson-cellar`).
-    - Start **Apache** and **MySQL**.
-    - Visit `http://localhost/crimson-cellar/index.php` in your browser.
+```text
+MYSQL_HOST=localhost
+MYSQL_USER=root
+MYSQL_PASSWORD=
+MYSQL_DATABASE=crimsondb
+MYSQL_PORT=3307
+```
 
-## 🧪 Demo Account
+If your local MySQL uses a different port or password, set the environment variables before starting the server, or edit the defaults in `src/conn_db.php`.
 
-To test the member features (Checkout, Order History) without registering, use the pre-configured admin/test account:
+### 3. Run with PHP's built-in server
 
-- **Username (Email):** `john.smith@email.com`
-- **Password:** `hashpassword1`
+From the project root:
 
-## 🎬 Demo Screenshots
+```bash
+php -S localhost:8000 -t public scripts/router.php
+```
 
-- **Index Page:**
-<img width="1920" height="881" alt="image17" src="https://github.com/user-attachments/assets/df190558-076a-4027-b2f4-383aa7eb1046" />
-- **Login Page:**
-<img width="1920" height="881" alt="image4" src="https://github.com/user-attachments/assets/55896cb1-44d8-48e2-b19f-d1c6f2d99125" />
-- **Account Page:**
-<img width="1920" height="879" alt="image5" src="https://github.com/user-attachments/assets/afbf1308-3ed9-4dd5-8580-8e17cf77f30f" />
-- **Payment Page:**
-<img width="1920" height="879" alt="image11" src="https://github.com/user-attachments/assets/1a8c1a20-953c-49aa-a68a-32b2f5fb67a4" />
-<img width="710" height="1017" alt="image12" src="https://github.com/user-attachments/assets/3998822b-e244-4d0c-9f1e-202d39ea0a7b" />
+Open `http://localhost:8000` in your browser.
 
-## ⚠️ Security Disclaimer
+The router maps URL paths such as `/shop.php` to their corresponding handler in `api/`, while `public/` serves CSS and images.
 
-**This project is for educational and portfolio purposes only.**
+## Deploying to Vercel
 
-- **Payment Safety:** The checkout process includes a **simulated** credit card form. It demonstrates data handling (masking/validation) but does **NOT** process real financial transactions. Do not enter real credit card numbers.
-- **Data Storage:** The application strictly avoids storing sensitive payment information (PCI-DSS compliance simulation).
+Vercel does not run PHP by default, so this project uses the [vercel-php](https://github.com/vercel-community/php) community runtime declared in `vercel.json`. Static files are served from `public/`, and dynamic requests are rewritten to PHP handlers in `api/`.
 
-## 📄 License
+### 1. Push the branch
 
-This project is open-sourced under the **MIT License**.
+```bash
+git push origin deploy/vercel
+```
 
-Copyright (c) 2024-2026
+### 2. Import the repository in Vercel
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit users of the Software to do so, subject to
-the following conditions:
+In the Vercel dashboard, add a new project, select this repository, and choose the `deploy/vercel` branch. Vercel should detect `vercel.json` automatically.
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+### 3. Add environment variables
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+Set these in **Project Settings > Environment Variables**:
+
+| Name | Example value |
+| --- | --- |
+| `MYSQL_HOST` | `your-database-host` |
+| `MYSQL_USER` | `your-database-user` |
+| `MYSQL_PASSWORD` | `your-database-password` |
+| `MYSQL_DATABASE` | `crimsondb` |
+| `MYSQL_PORT` | `3306` |
+
+MySQL is not provided by Vercel itself. Host the database separately (for example Railway, Aiven, AWS RDS, or another managed MySQL provider) and import `database/crimson_cellar.sql` there.
+
+### 4. Deploy
+
+Deploy the project. The site root will be served through `api/index.php`, and pages such as `/shop.php`, `/login.php`, and `/cart.php` are rewritten to their matching `api/` handlers.
+
+## Demo account
+
+To test member features (checkout and order history) without registering:
+
+- Username (email): `john.smith@email.com`
+- Password: `hashpassword1`
+
+## Important Vercel limitations
+
+- PHP sessions are stored on the local function filesystem by default, which is not durable across cold starts or multiple instances. For production, configure a Redis-backed session handler or use a marketplace Redis integration.
+- Vercel Functions are stateless. Keep file uploads and user-generated files in external storage such as Vercel Blob.
+- Database credentials must be configured as Vercel environment variables, never committed to the repository.
+
+## Security disclaimer
+
+This project is for educational and portfolio purposes only. The checkout process is a simulated credit card form and does **not** process real financial transactions. Do not enter real credit card numbers. Sensitive payment details are never written to the database.
+
+## License
+
+This project is open-sourced under the MIT License.

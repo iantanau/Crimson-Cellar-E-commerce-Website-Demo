@@ -1,7 +1,7 @@
 <?php
-include_once 'conn_db.php';
-require_once 'init_cart.php';
-require_once 'gen_id.php';
+include_once __DIR__ . '/../src/conn_db.php';
+require_once __DIR__ . '/../src/init_cart.php';
+require_once __DIR__ . '/../src/gen_id.php';
 
 // Check if user is logged in
 if (!isset($_SESSION['email']) || !isset($_SESSION['user_id'])) {

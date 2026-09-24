@@ -1,10 +1,13 @@
 <?php
     // init_cart.php already handles session_start()
-    require_once 'init_cart.php';
-    require_once 'conn_db.php';
+    require_once __DIR__ . '/init_cart.php';
+    require_once __DIR__ . '/conn_db.php';
     
-    // Get current page for active navigation highlighting
-    $current_page = basename($_SERVER['PHP_SELF']);
+    // Get current page for active navigation highlighting.
+    // Use the request path so rewrites (Vercel) and router scripts report
+    // the public URL rather than the internal api/ handler path.
+    $request_path = parse_url($_SERVER['REQUEST_URI'] ?? '/', PHP_URL_PATH);
+    $current_page = basename($request_path ?: 'index.php');
 ?>
 
 <header>

@@ -1,6 +1,10 @@
 <?php
 // Start session for error message
-require_once 'conn_db.php';
+require_once __DIR__ . '/../src/conn_db.php';
+
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
 // Form submission handling
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -111,7 +115,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <body>
 
             <!-- header -->
-            <?php include 'header.php'; ?>
+            <?php include __DIR__ . '/../src/header.php'; ?>
 
             <!-- Success Content -->
             <div class="register-success-container">
@@ -162,7 +166,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
 
             <!-- footer -->
-            <?php include 'footer.php'; ?>
+            <?php include __DIR__ . '/../src/footer.php'; ?>
 
         <?php
         unset($_SESSION['form_data']);

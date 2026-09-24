@@ -1,5 +1,5 @@
 <?php
-require_once 'conn_db.php';
+require_once __DIR__ . '/../src/conn_db.php';
 
 // Fetch product details based on product ID from query parameter
 if (isset($_GET['id'])) {
@@ -54,7 +54,7 @@ $conn->close();
 </head>
 <body>
 
-    <?php include 'header.php'; ?>
+    <?php include __DIR__ . '/../src/header.php'; ?>
 
     <!-- Product Detail Section -->
     <div class="product-detail-container">
@@ -186,7 +186,7 @@ $conn->close();
         </div>
     </div>
 
-    <?php include 'footer.php'; ?>
+    <?php include __DIR__ . '/../src/footer.php'; ?>
 
 </body>
 </html>

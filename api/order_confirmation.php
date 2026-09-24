@@ -1,6 +1,6 @@
 <?php
-include_once 'conn_db.php';
-require_once 'init_cart.php';
+include_once __DIR__ . '/../src/conn_db.php';
+require_once __DIR__ . '/../src/init_cart.php';
 
 // Check if user is logged in
 if (!isset($_SESSION['email'])) {
@@ -62,7 +62,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['back_to_cart'])) {
 </head>
 <body>
 
-<?php include 'header.php'; ?>
+<?php include __DIR__ . '/../src/header.php'; ?>
 
 <div class="order-confirm-container">
     <div class="order-confirm-header">
@@ -204,7 +204,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['back_to_cart'])) {
         </button>
     </form>
 
-<?php include 'footer.php'; ?>
+<?php include __DIR__ . '/../src/footer.php'; ?>
 
 </body>
 </html>

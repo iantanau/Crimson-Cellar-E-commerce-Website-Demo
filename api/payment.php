@@ -1,6 +1,6 @@
 <?php
-include_once 'conn_db.php';
-require_once 'init_cart.php';
+include_once __DIR__ . '/../src/conn_db.php';
+require_once __DIR__ . '/../src/init_cart.php';
 
 // Check if user is logged in
 if (!isset($_SESSION['email'])) {
@@ -33,7 +33,7 @@ $_SESSION['total_price'] = $total;
 </head>
 <body>
 
-<?php include 'header.php'; ?>
+<?php include __DIR__ . '/../src/header.php'; ?>
 
 <div class="cart-container">
     <div class="cart-header">
@@ -143,7 +143,7 @@ $_SESSION['total_price'] = $total;
     </div>
 </div>
 
-<?php include 'footer.php'; ?>
+<?php include __DIR__ . '/../src/footer.php'; ?>
 
 <!-- PayPal SDK -->
 <script src="https://www.paypal.com/sdk/js?client-id=Aaw7hQBgH2HAc-Bi0iAvQ6UY2lUb4pfEstjUYKh6oV9Q2V6tmmFJklK5uq_Gi0oaiFAiyJaF6PcC3G5L&enable-funding=venmo&currency=AUD" data-sdk-integration-source="button-factory"></script>

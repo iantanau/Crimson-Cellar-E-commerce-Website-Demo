@@ -9,7 +9,7 @@
 </head>
 <body>
 
-    <?php include 'header.php'; ?>
+    <?php include __DIR__ . '/../src/header.php'; ?>
 
 	<!-- Contact Content -->
     <div class="contact-container">
@@ -102,7 +102,7 @@
 		</div>
     </div>
 
-    <?php include 'footer.php'; ?>
+    <?php include __DIR__ . '/../src/footer.php'; ?>
 
 </body>
 </html>

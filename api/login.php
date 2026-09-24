@@ -10,7 +10,7 @@
 <body>
 
     <!-- header -->
-    <?php include 'header.php'; ?>
+    <?php include __DIR__ . '/../src/header.php'; ?>
 
 	<!-- Login Content -->
     <div class="login-container">
@@ -78,7 +78,7 @@
     </div>
 
     <!-- footer -->
-    <?php include 'footer.php'; ?>
+    <?php include __DIR__ . '/../src/footer.php'; ?>
 
 </body>
 </html>

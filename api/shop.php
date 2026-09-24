@@ -1,6 +1,6 @@
 <?php
-require_once 'conn_db.php';
-require_once 'init_cart.php';
+require_once __DIR__ . '/../src/conn_db.php';
+require_once __DIR__ . '/../src/init_cart.php';
 
 // --- Filters: read from GET ---
 $filter_year_from = isset($_GET['year_from']) ? trim($_GET['year_from']) : '';
@@ -111,7 +111,7 @@ while ($row = $stylesResult->fetch_assoc()) {
 </head>
 <body>
 
-    <?php include 'header.php'; ?>
+    <?php include __DIR__ . '/../src/header.php'; ?>
 
     <!-- Shopping Content -->
     <div class="shop-container">
@@ -236,6 +236,6 @@ while ($row = $stylesResult->fetch_assoc()) {
         </div>
     </div>
 
-    <?php include 'footer.php'; ?>
+    <?php include __DIR__ . '/../src/footer.php'; ?>
 </body>
 </html>

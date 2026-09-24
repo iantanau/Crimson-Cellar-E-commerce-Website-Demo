@@ -9,7 +9,7 @@
 </head>
 <body>
 
-    <?php include 'header.php'; ?>
+    <?php include __DIR__ . '/../src/header.php'; ?>
 
     <!-- About Section -->
     <section class="about">
@@ -23,7 +23,7 @@
         </div>
     </section>
 
-    <?php include 'footer.php'; ?>
+    <?php include __DIR__ . '/../src/footer.php'; ?>
 
 </body>
 </html>

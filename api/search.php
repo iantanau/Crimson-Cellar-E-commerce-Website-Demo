@@ -1,6 +1,6 @@
 <?php
-require_once 'conn_db.php';
-require_once 'init_cart.php';
+require_once __DIR__ . '/../src/conn_db.php';
+require_once __DIR__ . '/../src/init_cart.php';
 
 // Obtain the search query from the URL parameter
 $searchQuery = isset($_GET['q']) ? trim($_GET['q']) : '';
@@ -39,7 +39,7 @@ $products = $result->fetch_all(MYSQLI_ASSOC);
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <?php include 'header.php';?>
+    <?php include __DIR__ . '/../src/header.php';?>
 
     <div class="page-container">
         <div class="search-results-container">
@@ -108,6 +108,6 @@ $products = $result->fetch_all(MYSQLI_ASSOC);
         </div>
     </div>
 
-    <?php include 'footer.php'; ?>
+    <?php include __DIR__ . '/../src/footer.php'; ?>
 </body>
 </html>

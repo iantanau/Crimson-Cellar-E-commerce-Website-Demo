@@ -1,7 +1,7 @@
 <?php
 // init_cart.php already handles session_start()
-require_once 'init_cart.php';
-require_once 'conn_db.php';
+require_once __DIR__ . '/../src/init_cart.php';
+require_once __DIR__ . '/../src/conn_db.php';
 
 // Redirect to login if not logged in
 if (!isset($_SESSION['user_id'])) {
@@ -65,7 +65,7 @@ $stmt->close();
 </head>
 <body>
     <!-- header -->
-    <?php include 'header.php'; ?>
+    <?php include __DIR__ . '/../src/header.php'; ?>
 
     <div class="member-container">
         <div class="member-header">
@@ -206,7 +206,7 @@ $stmt->close();
     </div>
 
     <!-- footer -->
-    <?php include 'footer.php'; ?>
+    <?php include __DIR__ . '/../src/footer.php'; ?>
 
     <script>
         // Tab Card Functionality

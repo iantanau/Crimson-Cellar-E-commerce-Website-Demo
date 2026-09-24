@@ -1,5 +1,5 @@
 <?php
-include_once 'conn_db.php';
+include_once __DIR__ . '/../src/conn_db.php';
 
 // Check if order_id is provided
 if (!isset($_GET['order_id'])) {
@@ -46,7 +46,7 @@ $items_stmt->close();
 </head>
 <body>
 
-<?php include 'header.php'; ?>
+<?php include __DIR__ . '/../src/header.php'; ?>
 
 <div class="register-success-container">
     <div class="register-success-icon">
@@ -103,7 +103,7 @@ $items_stmt->close();
     </div>
 </div>
 
-<?php include 'footer.php'; ?>
+<?php include __DIR__ . '/../src/footer.php'; ?>
 
 </body>
 </html>
