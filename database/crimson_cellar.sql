@@ -107,7 +107,7 @@ INSERT INTO products (colour_id, style_id, country_id, name, description, vintag
 -- 4. Orders Table
 -- ==============================
 CREATE TABLE if not exists orders (
-    order_id VARCHAR PRIMARY KEY,
+    order_id INT AUTO_INCREMENT PRIMARY KEY,
     user_id INT,
     order_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     total_amount DECIMAL(10,2),
@@ -135,7 +135,7 @@ INSERT INTO orders (user_id, total_amount, status, shipping_street_address, ship
 -- ==============================
 CREATE TABLE if not exists order_items (
     order_item_id INT AUTO_INCREMENT PRIMARY KEY,
-    order_id VARCHAR,
+    order_id INT,
     product_id INT,
     quantity INT,
     subtotal DECIMAL(10,2),
