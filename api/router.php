@@ -7,6 +7,8 @@ if ($page === '') {
     $page = 'index.php';
 }
 
+require_once __DIR__ . '/src/product_cart_class.php';
+
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
