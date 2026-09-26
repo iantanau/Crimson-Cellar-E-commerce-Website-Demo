@@ -7,6 +7,10 @@ if ($page === '') {
     $page = 'index.php';
 }
 
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
 $allowed = [
     'about.php',
     'add_to_cart.php',
